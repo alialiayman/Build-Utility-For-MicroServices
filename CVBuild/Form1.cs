@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.ServiceProcess;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,6 +32,13 @@ namespace CVBuild
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!IsUserAdministrator())
+            {
+                MessageBox.Show(
+                    "You must start this program as an administrator because.\nPlease restart as administrator.\nThe application will now shutdown",
+                    "Run as administrator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             allimpServices = impServicesManager.GetImpServices();
             lstiMPServices.DataSource = allimpServices;
             DeleteTempFiles();
@@ -105,6 +113,22 @@ namespace CVBuild
 
 
         }
+
+
+        public bool IsUserAdministrator()
+        {
+            try
+            {
+                var user = WindowsIdentity.GetCurrent();
+                var principal = new WindowsPrincipal(user);
+                return principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         private void DisplayMessage(string message)
         {
