@@ -1,0 +1,10 @@
+c:\Projects\CVBuild\CVBuild\bin\Debug\CVBuild.exe.config
+c:\Projects\CVBuild\CVBuild\bin\Debug\CVBuild.exe
+c:\Projects\CVBuild\CVBuild\bin\Debug\CVBuild.pdb
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.Form1.resources
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.Properties.Resources.resources
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csproj.GenerateResource.cache
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csproj.CoreCompileInputs.cache
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.exe
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.pdb
+c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csprojResolveAssemblyReference.cache
