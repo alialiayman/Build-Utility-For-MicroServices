@@ -1,3 +1,2 @@
 iMP.ServiceHost
 iMP.APSPlatformService
-iMP.WorkflowService

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lstSolutions = new System.Windows.Forms.ListBox();
             this.dfsSearch = new System.Windows.Forms.TextBox();
             this.lstiMPServices = new System.Windows.Forms.ListBox();
@@ -37,6 +38,7 @@
             this.dfsServicesFilter = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sbMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsBuild = new System.Windows.Forms.ToolStripSplitButton();
             this.tbBuild = new System.Windows.Forms.TabControl();
             this.tbBuildControl = new System.Windows.Forms.TabPage();
             this.grpServicesToRestart = new System.Windows.Forms.GroupBox();
@@ -55,7 +57,6 @@
             this.ltnSolutionFolder = new System.Windows.Forms.LinkLabel();
             this.btnAddToSolutionsToBuild = new System.Windows.Forms.Button();
             this.tmrBuildMonitor = new System.Windows.Forms.Timer(this.components);
-            this.tsBuild = new System.Windows.Forms.ToolStripSplitButton();
             this.statusStrip1.SuspendLayout();
             this.tbBuild.SuspendLayout();
             this.tbBuildControl.SuspendLayout();
@@ -132,6 +133,16 @@
             this.sbMessage.Size = new System.Drawing.Size(787, 17);
             this.sbMessage.Spring = true;
             this.sbMessage.Text = "Ready...";
+            // 
+            // tsBuild
+            // 
+            this.tsBuild.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBuild.Image = global::CVBuild.Properties.Resources.Build;
+            this.tsBuild.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBuild.Name = "tsBuild";
+            this.tsBuild.Size = new System.Drawing.Size(32, 20);
+            this.tsBuild.Text = "Build";
+            this.tsBuild.ButtonClick += new System.EventHandler(this.tsBuild_ButtonClick);
             // 
             // tbBuild
             // 
@@ -333,16 +344,6 @@
             this.tmrBuildMonitor.Interval = 2000;
             this.tmrBuildMonitor.Tick += new System.EventHandler(this.tmrBuildMonitor_Tick);
             // 
-            // tsBuild
-            // 
-            this.tsBuild.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBuild.Image = global::CVBuild.Properties.Resources.Build;
-            this.tsBuild.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBuild.Name = "tsBuild";
-            this.tsBuild.Size = new System.Drawing.Size(32, 20);
-            this.tsBuild.Text = "Build";
-            this.tsBuild.ButtonClick += new System.EventHandler(this.tsBuild_ButtonClick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,6 +351,7 @@
             this.ClientSize = new System.Drawing.Size(834, 280);
             this.Controls.Add(this.tbBuild);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "iMP Build";
             this.ResizeBegin += new System.EventHandler(this.Form1_ResizeBegin);
