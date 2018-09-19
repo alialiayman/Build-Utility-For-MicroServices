@@ -68,6 +68,14 @@ namespace CVBuild
 
                 }
             }
+
+            ShowAtBottom();
+        }
+
+        private void ShowAtBottom()
+        {
+            this.Top = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
+            this.Left = 0;
         }
 
         private void DeleteTempFiles()
@@ -252,10 +260,6 @@ namespace CVBuild
             {
                 var slnName = Path.GetFileNameWithoutExtension(sln.ToString());
                 var batchCommand = "title " + slnName + Environment.NewLine;
-                foreach (var svcName in lstRestartServices.Items)
-                {
-                    batchCommand += "net stop " + svcName.ToString() + Environment.NewLine;
-                }
                 batchCommand += "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\MSBuild\\15.0\\Bin\\msbuild.exe\" ";
                 batchCommand += sln.ToString() + " /p:Configuration=Debug /p:Platform=\"Any CPU\" /t:build /maxcpucount:4 /fl /flp:logfile=" + slnName + buildId + ".log;verbosity=normal /clp:ErrorsOnly;ShowEventId;verbosity=normal";
                 batchCommand += Environment.NewLine + "Timeout /T 30";
@@ -263,7 +267,6 @@ namespace CVBuild
                 File.WriteAllText(batchFileName, batchCommand);
                 Process.Start(batchFileName);
             }
-            MonitorBuild();
         }
 
         private void MonitorBuild()
@@ -356,8 +359,7 @@ namespace CVBuild
         private void tsBuild_ButtonClick(object sender, EventArgs e)
         {
             this.Width = grpServicesToRestart.Width + 100;
-            this.Top = Screen.PrimaryScreen.WorkingArea.Bottom - this.Height;
-            this.Left = Screen.PrimaryScreen.WorkingArea.Width - this.Width;
+            ShowAtBottom();
             Build();
         }
     }

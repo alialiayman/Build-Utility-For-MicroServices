@@ -73,7 +73,7 @@
             this.lstSolutions.Location = new System.Drawing.Point(13, 45);
             this.lstSolutions.Name = "lstSolutions";
             this.lstSolutions.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSolutions.Size = new System.Drawing.Size(530, 173);
+            this.lstSolutions.Size = new System.Drawing.Size(530, 95);
             this.lstSolutions.TabIndex = 7;
             // 
             // dfsSearch
@@ -90,7 +90,7 @@
             this.lstiMPServices.Location = new System.Drawing.Point(6, 45);
             this.lstiMPServices.Name = "lstiMPServices";
             this.lstiMPServices.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstiMPServices.Size = new System.Drawing.Size(240, 173);
+            this.lstiMPServices.Size = new System.Drawing.Size(240, 95);
             this.lstiMPServices.TabIndex = 10;
             // 
             // tmrServices
@@ -104,7 +104,7 @@
             this.lstSolutionsToBuild.Location = new System.Drawing.Point(6, 45);
             this.lstSolutionsToBuild.Name = "lstSolutionsToBuild";
             this.lstSolutionsToBuild.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSolutionsToBuild.Size = new System.Drawing.Size(554, 173);
+            this.lstSolutionsToBuild.Size = new System.Drawing.Size(554, 95);
             this.lstSolutionsToBuild.TabIndex = 14;
             this.lstSolutionsToBuild.SelectedIndexChanged += new System.EventHandler(this.lstSolutionsToBuild_SelectedIndexChanged);
             // 
@@ -121,16 +121,16 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sbMessage,
             this.tsBuild});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 258);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 178);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(834, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(830, 22);
             this.statusStrip1.TabIndex = 25;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // sbMessage
             // 
             this.sbMessage.Name = "sbMessage";
-            this.sbMessage.Size = new System.Drawing.Size(787, 17);
+            this.sbMessage.Size = new System.Drawing.Size(783, 17);
             this.sbMessage.Spring = true;
             this.sbMessage.Text = "Ready...";
             // 
@@ -152,7 +152,7 @@
             this.tbBuild.Location = new System.Drawing.Point(0, 0);
             this.tbBuild.Name = "tbBuild";
             this.tbBuild.SelectedIndex = 0;
-            this.tbBuild.Size = new System.Drawing.Size(834, 258);
+            this.tbBuild.Size = new System.Drawing.Size(830, 178);
             this.tbBuild.TabIndex = 27;
             // 
             // tbBuildControl
@@ -162,7 +162,7 @@
             this.tbBuildControl.Location = new System.Drawing.Point(4, 22);
             this.tbBuildControl.Name = "tbBuildControl";
             this.tbBuildControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBuildControl.Size = new System.Drawing.Size(826, 232);
+            this.tbBuildControl.Size = new System.Drawing.Size(826, 152);
             this.tbBuildControl.TabIndex = 0;
             this.tbBuildControl.Text = "Build Control";
             this.tbBuildControl.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.grpServicesToRestart.Dock = System.Windows.Forms.DockStyle.Right;
             this.grpServicesToRestart.Location = new System.Drawing.Point(576, 3);
             this.grpServicesToRestart.Name = "grpServicesToRestart";
-            this.grpServicesToRestart.Size = new System.Drawing.Size(247, 226);
+            this.grpServicesToRestart.Size = new System.Drawing.Size(247, 146);
             this.grpServicesToRestart.TabIndex = 27;
             this.grpServicesToRestart.TabStop = false;
             this.grpServicesToRestart.Text = "iMP Services";
@@ -185,7 +185,7 @@
             // 
             this.lstRestartServices.Location = new System.Drawing.Point(6, 45);
             this.lstRestartServices.Name = "lstRestartServices";
-            this.lstRestartServices.Size = new System.Drawing.Size(228, 173);
+            this.lstRestartServices.Size = new System.Drawing.Size(228, 95);
             this.lstRestartServices.TabIndex = 23;
             this.lstRestartServices.UseCompatibleStateImageBehavior = false;
             this.lstRestartServices.View = System.Windows.Forms.View.List;
@@ -231,7 +231,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(566, 226);
+            this.groupBox4.Size = new System.Drawing.Size(566, 146);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "iMP Solutions";
@@ -265,7 +265,7 @@
             this.tbSettings.Location = new System.Drawing.Point(4, 22);
             this.tbSettings.Name = "tbSettings";
             this.tbSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSettings.Size = new System.Drawing.Size(826, 232);
+            this.tbSettings.Size = new System.Drawing.Size(822, 152);
             this.tbSettings.TabIndex = 1;
             this.tbSettings.Text = "Settings";
             this.tbSettings.UseVisualStyleBackColor = true;
@@ -277,9 +277,9 @@
             this.groupBox2.Controls.Add(this.lstiMPServices);
             this.groupBox2.Controls.Add(this.btnAddService);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox2.Location = new System.Drawing.Point(571, 3);
+            this.groupBox2.Location = new System.Drawing.Point(567, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(252, 226);
+            this.groupBox2.Size = new System.Drawing.Size(252, 146);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "iMP Services";
@@ -313,7 +313,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(559, 226);
+            this.groupBox1.Size = new System.Drawing.Size(559, 146);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "iMP Solutions";
@@ -348,7 +348,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 280);
+            this.ClientSize = new System.Drawing.Size(830, 200);
             this.Controls.Add(this.tbBuild);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

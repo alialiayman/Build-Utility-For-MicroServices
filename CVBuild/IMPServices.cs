@@ -4,6 +4,8 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management;
+using System.Diagnostics;
 
 namespace CVBuild
 {
@@ -35,6 +37,19 @@ namespace CVBuild
                 {
                     service.WaitForStatus(ServiceControllerStatus.Running);
                     service.Stop();
+                    ManagementObject mo = new ManagementObject(@"Win32_service.Name='" + service.ServiceName + "'");
+                    object o = mo.GetPropertyValue("ProcessId");
+                    int processId = (int)((UInt32)o);
+                    try
+                    {
+                        var process = Process.GetProcessById(processId);
+                        process.Kill();
+                    }
+                    catch
+                    {
+
+                    }
+
                 }
             }
 
