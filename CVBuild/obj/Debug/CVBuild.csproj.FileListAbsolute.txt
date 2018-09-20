@@ -7,4 +7,3 @@ c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csproj.GenerateResource.cache
 c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csproj.CoreCompileInputs.cache
 c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.exe
 c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.pdb
-c:\Projects\CVBuild\CVBuild\obj\Debug\CVBuild.csprojResolveAssemblyReference.cache

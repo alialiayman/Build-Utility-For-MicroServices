@@ -40,7 +40,10 @@ namespace CVBuild
                 Application.Exit();
             }
             allimpServices = impServicesManager.GetImpServices();
-            lstiMPServices.DataSource = allimpServices;
+            foreach (var item in allimpServices)
+            {
+                lstiMPServices.Items.Add(item);
+            }
             DeleteTempFiles();
             //lblimpServices.Text = "iMP Services " + lstiMPServices.Items.Count;
             if (!string.IsNullOrEmpty(ltnSolutionFolder.Text) && ltnSolutionFolder.Text.Contains("\\"))
@@ -183,6 +186,14 @@ namespace CVBuild
                     item.BackColor = Color.White;
 
             }
+            foreach (ListViewItem item in lstiMPServices.Items)
+            {
+                if (impServicesManager.IsRunning(item.Text))
+                    item.BackColor = Color.LightGreen;
+                else
+                    item.BackColor = Color.White;
+
+            }
         }
 
         private void btnAddToSolutionsToBuild_Click(object sender, EventArgs e)
@@ -225,7 +236,7 @@ namespace CVBuild
 
         private void dfsServicesFilter_TextChanged(object sender, EventArgs e)
         {
-            lstiMPServices.DataSource = allimpServices.Where(x => x.ToLower().Contains(dfsServicesFilter.Text.ToLower())).ToList();
+            //lstiMPServicesa.DataSource = allimpServices.Where(x => x.ToLower().Contains(dfsServicesFilter.Text.ToLower())).ToList();
         }
 
         string buildId;
@@ -361,6 +372,29 @@ namespace CVBuild
             this.Width = grpServicesToRestart.Width + 100;
             ShowAtBottom();
             Build();
+        }
+
+        private void btnStopAll_Click(object sender, EventArgs e)
+        {
+            tmrServices.Start();
+            var servicesToStop = new List<string>();
+            foreach (ListViewItem item in lstiMPServices.Items)
+            {
+                servicesToStop.Add(item.Text);
+            }
+            impServicesManager.StopServices(servicesToStop);
+
+        }
+
+        private void btnStartAll_Click(object sender, EventArgs e)
+        {
+            tmrServices.Start();
+            var servicesToStart = new List<string>();
+            foreach (ListViewItem item in lstiMPServices.Items)
+            {
+                servicesToStart.Add(item.Text);
+            }
+            impServicesManager.StartServices(servicesToStart);
         }
     }
 }

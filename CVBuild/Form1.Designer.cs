@@ -32,10 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lstSolutions = new System.Windows.Forms.ListBox();
             this.dfsSearch = new System.Windows.Forms.TextBox();
-            this.lstiMPServices = new System.Windows.Forms.ListBox();
             this.tmrServices = new System.Windows.Forms.Timer(this.components);
             this.lstSolutionsToBuild = new System.Windows.Forms.ListBox();
-            this.dfsServicesFilter = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sbMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsBuild = new System.Windows.Forms.ToolStripSplitButton();
@@ -51,12 +49,14 @@
             this.btnBuildAllSolutionsToBuild = new System.Windows.Forms.Button();
             this.tbSettings = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnAddService = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ltnSolutionFolder = new System.Windows.Forms.LinkLabel();
             this.btnAddToSolutionsToBuild = new System.Windows.Forms.Button();
             this.tmrBuildMonitor = new System.Windows.Forms.Timer(this.components);
+            this.btnStopAll = new System.Windows.Forms.Button();
+            this.btnStartAll = new System.Windows.Forms.Button();
+            this.lstiMPServices = new System.Windows.Forms.ListView();
             this.statusStrip1.SuspendLayout();
             this.tbBuild.SuspendLayout();
             this.tbBuildControl.SuspendLayout();
@@ -74,6 +74,7 @@
             this.lstSolutions.Name = "lstSolutions";
             this.lstSolutions.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstSolutions.Size = new System.Drawing.Size(530, 95);
+            this.lstSolutions.Sorted = true;
             this.lstSolutions.TabIndex = 7;
             // 
             // dfsSearch
@@ -83,15 +84,6 @@
             this.dfsSearch.Size = new System.Drawing.Size(89, 20);
             this.dfsSearch.TabIndex = 8;
             this.dfsSearch.TextChanged += new System.EventHandler(this.dfsSearch_TextChanged);
-            // 
-            // lstiMPServices
-            // 
-            this.lstiMPServices.FormattingEnabled = true;
-            this.lstiMPServices.Location = new System.Drawing.Point(6, 45);
-            this.lstiMPServices.Name = "lstiMPServices";
-            this.lstiMPServices.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstiMPServices.Size = new System.Drawing.Size(240, 95);
-            this.lstiMPServices.TabIndex = 10;
             // 
             // tmrServices
             // 
@@ -105,16 +97,9 @@
             this.lstSolutionsToBuild.Name = "lstSolutionsToBuild";
             this.lstSolutionsToBuild.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstSolutionsToBuild.Size = new System.Drawing.Size(554, 95);
+            this.lstSolutionsToBuild.Sorted = true;
             this.lstSolutionsToBuild.TabIndex = 14;
             this.lstSolutionsToBuild.SelectedIndexChanged += new System.EventHandler(this.lstSolutionsToBuild_SelectedIndexChanged);
-            // 
-            // dfsServicesFilter
-            // 
-            this.dfsServicesFilter.Location = new System.Drawing.Point(41, 20);
-            this.dfsServicesFilter.Name = "dfsServicesFilter";
-            this.dfsServicesFilter.Size = new System.Drawing.Size(67, 20);
-            this.dfsServicesFilter.TabIndex = 20;
-            this.dfsServicesFilter.TextChanged += new System.EventHandler(this.dfsServicesFilter_TextChanged);
             // 
             // statusStrip1
             // 
@@ -162,7 +147,7 @@
             this.tbBuildControl.Location = new System.Drawing.Point(4, 22);
             this.tbBuildControl.Name = "tbBuildControl";
             this.tbBuildControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tbBuildControl.Size = new System.Drawing.Size(826, 152);
+            this.tbBuildControl.Size = new System.Drawing.Size(822, 152);
             this.tbBuildControl.TabIndex = 0;
             this.tbBuildControl.Text = "Build Control";
             this.tbBuildControl.UseVisualStyleBackColor = true;
@@ -174,7 +159,7 @@
             this.grpServicesToRestart.Controls.Add(this.btnStopSelected);
             this.grpServicesToRestart.Controls.Add(this.btnStartSelectedServices);
             this.grpServicesToRestart.Dock = System.Windows.Forms.DockStyle.Right;
-            this.grpServicesToRestart.Location = new System.Drawing.Point(576, 3);
+            this.grpServicesToRestart.Location = new System.Drawing.Point(572, 3);
             this.grpServicesToRestart.Name = "grpServicesToRestart";
             this.grpServicesToRestart.Size = new System.Drawing.Size(247, 146);
             this.grpServicesToRestart.TabIndex = 27;
@@ -186,6 +171,7 @@
             this.lstRestartServices.Location = new System.Drawing.Point(6, 45);
             this.lstRestartServices.Name = "lstRestartServices";
             this.lstRestartServices.Size = new System.Drawing.Size(228, 95);
+            this.lstRestartServices.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lstRestartServices.TabIndex = 23;
             this.lstRestartServices.UseCompatibleStateImageBehavior = false;
             this.lstRestartServices.View = System.Windows.Forms.View.List;
@@ -272,9 +258,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.dfsServicesFilter);
             this.groupBox2.Controls.Add(this.lstiMPServices);
+            this.groupBox2.Controls.Add(this.btnStopAll);
+            this.groupBox2.Controls.Add(this.btnStartAll);
             this.groupBox2.Controls.Add(this.btnAddService);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Location = new System.Drawing.Point(567, 3);
@@ -283,15 +269,6 @@
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "iMP Services";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Filter";
             // 
             // btnAddService
             // 
@@ -344,6 +321,38 @@
             this.tmrBuildMonitor.Interval = 2000;
             this.tmrBuildMonitor.Tick += new System.EventHandler(this.tmrBuildMonitor_Tick);
             // 
+            // btnStopAll
+            // 
+            this.btnStopAll.BackgroundImage = global::CVBuild.Properties.Resources.stop;
+            this.btnStopAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStopAll.Location = new System.Drawing.Point(159, 19);
+            this.btnStopAll.Name = "btnStopAll";
+            this.btnStopAll.Size = new System.Drawing.Size(25, 23);
+            this.btnStopAll.TabIndex = 28;
+            this.btnStopAll.UseVisualStyleBackColor = true;
+            this.btnStopAll.Click += new System.EventHandler(this.btnStopAll_Click);
+            // 
+            // btnStartAll
+            // 
+            this.btnStartAll.BackgroundImage = global::CVBuild.Properties.Resources.Play;
+            this.btnStartAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStartAll.Location = new System.Drawing.Point(190, 19);
+            this.btnStartAll.Name = "btnStartAll";
+            this.btnStartAll.Size = new System.Drawing.Size(25, 23);
+            this.btnStartAll.TabIndex = 27;
+            this.btnStartAll.UseVisualStyleBackColor = true;
+            this.btnStartAll.Click += new System.EventHandler(this.btnStartAll_Click);
+            // 
+            // lstiMPServices
+            // 
+            this.lstiMPServices.Location = new System.Drawing.Point(6, 46);
+            this.lstiMPServices.Name = "lstiMPServices";
+            this.lstiMPServices.Size = new System.Drawing.Size(240, 94);
+            this.lstiMPServices.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lstiMPServices.TabIndex = 29;
+            this.lstiMPServices.UseCompatibleStateImageBehavior = false;
+            this.lstiMPServices.View = System.Windows.Forms.View.List;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,7 +372,6 @@
             this.groupBox4.ResumeLayout(false);
             this.tbSettings.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -374,13 +382,11 @@
         #endregion
         private System.Windows.Forms.ListBox lstSolutions;
         private System.Windows.Forms.TextBox dfsSearch;
-        private System.Windows.Forms.ListBox lstiMPServices;
         private System.Windows.Forms.Timer tmrServices;
         private System.Windows.Forms.ListBox lstSolutionsToBuild;
         private System.Windows.Forms.Button btnAddToSolutionsToBuild;
         private System.Windows.Forms.Button btnAddService;
         private System.Windows.Forms.Button btnBuildAllSolutionsToBuild;
-        private System.Windows.Forms.TextBox dfsServicesFilter;
         private System.Windows.Forms.Button btnRemoveFromSolutionsToBuild;
         private System.Windows.Forms.Button btnRemoveService;
         private System.Windows.Forms.Button btnStartSelectedServices;
@@ -391,7 +397,6 @@
         private System.Windows.Forms.TabPage tbBuildControl;
         private System.Windows.Forms.TabPage tbSettings;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox grpServicesToRestart;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -399,6 +404,9 @@
         private System.Windows.Forms.LinkLabel ltnSolutionFolder;
         private System.Windows.Forms.Timer tmrBuildMonitor;
         private System.Windows.Forms.ToolStripSplitButton tsBuild;
+        private System.Windows.Forms.Button btnStopAll;
+        private System.Windows.Forms.Button btnStartAll;
+        private System.Windows.Forms.ListView lstiMPServices;
     }
 }
 
