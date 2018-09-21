@@ -28,6 +28,7 @@ namespace CVBuild
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             lstRestartServices.Columns.Add("Name",-2);
+            lstiMPServices.Columns.Add("Name",-2);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -40,9 +41,15 @@ namespace CVBuild
                 Application.Exit();
             }
             allimpServices = impServicesManager.GetImpServices();
-            foreach (var item in allimpServices)
+            foreach (var svcName in allimpServices)
             {
-                lstiMPServices.Items.Add(item);
+                var itm = new ListViewItem
+                {
+                    Text = svcName
+                };
+
+                lstiMPServices.Items.Add(itm);
+                if (impServicesManager.IsRunning(svcName)) itm.BackColor = Color.LightGreen; else itm.BackColor = Color.White;
             }
             DeleteTempFiles();
             //lblimpServices.Text = "iMP Services " + lstiMPServices.Items.Count;
@@ -53,8 +60,10 @@ namespace CVBuild
                 {
                     foreach (var svcName in File.ReadAllLines("Services.txt"))
                     {
-                        var itm = new ListViewItem();
-                        itm.Text = svcName;
+                        var itm = new ListViewItem
+                        {
+                            Text = svcName
+                        };
                         if (impServicesManager.IsRunning(svcName)) itm.BackColor = Color.LightGreen; else itm.BackColor = Color.White; 
                         lstRestartServices.Items.Add(itm);
                         impServicesManager.Services.Add(svcName);
@@ -217,9 +226,9 @@ namespace CVBuild
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var item in lstiMPServices.SelectedItems)
+            foreach (ListViewItem item in lstiMPServices.SelectedItems)
             {
-                lstRestartServices.Items.Add(new ListViewItem(new [] { item.ToString() }));
+                lstRestartServices.Items.Add(new ListViewItem(new [] { item.Text }));
             }
 
             File.WriteAllLines("Services.txt",lstRestartServices.Items.Cast<ListViewItem>().ToList().Select(x=> x.Text));

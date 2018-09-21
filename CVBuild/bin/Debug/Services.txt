@@ -1,2 +1,2 @@
-iMP.ServiceHost
 iMP.APSPlatformService
+iMP.ServiceHost
